@@ -4,6 +4,22 @@ This project deploys the [snowflake-emulator](https://github.com/nnnkkk7/snowfla
 
 **Repository**: This deployment uses the official [nnnkkk7/snowflake-emulator](https://github.com/nnnkkk7/snowflake-emulator) repository. Make sure you build the Docker image from this repository before deploying.
 
+## GitHub Repository Setup
+
+This project is initialized as a git repository. To push to GitHub:
+
+```bash
+# Create a new repository on GitHub (via web interface or GitHub CLI)
+# Then add the remote and push:
+git remote add origin https://github.com/YOUR_USERNAME/pulumi-snowflake.git
+git push -u origin main
+```
+
+Or using GitHub CLI:
+```bash
+gh repo create pulumi-snowflake --public --source=. --remote=origin --push
+```
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
