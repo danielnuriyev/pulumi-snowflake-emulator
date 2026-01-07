@@ -1,0 +1,9 @@
+[project]
+name = "snowflake-emulator-pulumi"
+version = "1.0.0"
+description = "Pulumi project to deploy snowflake-emulator to Kubernetes"
+requires-python = ">=3.9"
+dependencies = [
+    "pulumi>=3.0.0",
+    "pulumi-kubernetes>=4.0.0",
+]

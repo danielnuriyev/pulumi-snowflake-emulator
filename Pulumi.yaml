@@ -1,0 +1,3 @@
+name: snowflake-emulator
+runtime: python
+description: Deploy snowflake-emulator to local Kubernetes cluster

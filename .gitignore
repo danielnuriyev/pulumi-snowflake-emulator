@@ -1,0 +1,33 @@
+# Dependencies
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Pulumi state and secrets
+.pulumi/
+Pulumi.*.yaml
+!Pulumi.yaml
+
+# uv
+uv.lock
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local development files
+k8s.md
+kind-config.yaml
