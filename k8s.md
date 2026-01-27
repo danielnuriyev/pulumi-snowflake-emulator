@@ -64,7 +64,7 @@ nodes:
     hostPort: 8080
     protocol: TCP
   # Snowflake Emulator
-  - containerPort: 8081
+  - containerPort: 30081
     hostPort: 8081
     protocol: TCP
   # Dagster

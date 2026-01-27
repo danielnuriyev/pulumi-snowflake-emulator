@@ -124,20 +124,22 @@ service = k8s.core.v1.Service(
     opts=pulumi.ResourceOptions(depends_on=[deployment]),
 )
 
-# Create a LoadBalancer service for external access (NodePort on Kind)
-load_balancer_service = k8s.core.v1.Service(
-    "snowflake-emulator-lb",
+# Create a NodePort service for external access (Kind compatible)
+# Port mapping in kind-config.yaml forwards hostPort 8081 to containerPort 30081
+external_service = k8s.core.v1.Service(
+    "snowflake-emulator-external",
     metadata={
         "namespace": namespace.metadata["name"],
         "labels": app_labels,
         "name": "snowflake-emulator-external",
     },
     spec={
-        "type": "LoadBalancer",
+        "type": "NodePort",
         "ports": [
             {
                 "port": 8081,
                 "targetPort": 8080,
+                "nodePort": 30081,
                 "protocol": "TCP",
                 "name": "http",
             }
@@ -152,8 +154,8 @@ pulumi.export("namespace", namespace.metadata["name"])
 pulumi.export("deployment_name", deployment.metadata["name"])
 pulumi.export("service_name", service.metadata["name"])
 pulumi.export("service_port", service.spec["ports"][0]["port"])
-pulumi.export("external_service_name", load_balancer_service.metadata["name"])
-pulumi.export("external_port", load_balancer_service.spec["ports"][0]["port"])
+pulumi.export("external_service_name", external_service.metadata["name"])
+pulumi.export("external_port", external_service.spec["ports"][0]["port"])
 pulumi.export("access_url", "http://localhost:8081")
 pulumi.export("health_check_url", "http://localhost:8081/health")
 
